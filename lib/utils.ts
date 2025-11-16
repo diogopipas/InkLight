@@ -10,7 +10,7 @@ export function formatRelativeDate(input?: Date | string | null) {
   if (!input) return "Never";
   try {
     return formatDistanceToNowStrict(new Date(input), { addSuffix: true });
-  } catch (error) {
+  } catch {
     return "Unknown";
   }
 }

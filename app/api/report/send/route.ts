@@ -5,6 +5,8 @@ import { authOptions } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { sendScanReportEmail } from "@/lib/email";
 
+type Violation = Record<string, unknown>;
+
 export async function POST(request: Request) {
   const session = await getServerSession(authOptions);
   if (!session?.user?.id) {
@@ -28,7 +30,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ message: "No scans available" }, { status: 404 });
   }
 
-  const violations = (site.scans[0].issues as { violations?: any[] })?.violations ?? [];
+  const violations = (site.scans[0].issues as { violations?: Violation[] })?.violations ?? [];
 
   await sendScanReportEmail({
     to: site.user.email,

@@ -19,7 +19,7 @@ export async function POST(request: Request) {
     const withProtocol = /^https?:\/\//i.test(body.url) ? body.url : `https://${body.url}`;
     const parsed = new URL(withProtocol);
     normalizedUrl = parsed.origin;
-  } catch (error) {
+  } catch {
     return NextResponse.json({ message: "Invalid URL" }, { status: 400 });
   }
 
