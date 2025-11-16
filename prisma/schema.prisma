@@ -1,0 +1,46 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String         @id @default(cuid())
+  email        String         @unique
+  password     String
+  sites        Site[]
+  subscription Subscription?
+  createdAt    DateTime       @default(now())
+}
+
+model Site {
+  id        String       @id @default(cuid())
+  url       String
+  user      User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    String
+  scans     ScanResult[]
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
+}
+
+model ScanResult {
+  id        String   @id @default(cuid())
+  site      Site     @relation(fields: [siteId], references: [id], onDelete: Cascade)
+  siteId    String
+  issues    Json
+  createdAt DateTime @default(now())
+}
+
+model Subscription {
+  id               String   @id @default(cuid())
+  user             User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId           String   @unique
+  stripeCustomerId String
+  stripeSubId      String
+  status           String
+  createdAt        DateTime @default(now())
+}
+
