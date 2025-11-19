@@ -4,8 +4,7 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { sendScanReportEmail } from "@/lib/email";
-
-type Violation = Record<string, unknown>;
+import type { AccessibilityReport } from "@/lib/scanner";
 
 export async function POST(request: Request) {
   const session = await getServerSession(authOptions);
@@ -30,7 +29,8 @@ export async function POST(request: Request) {
     return NextResponse.json({ message: "No scans available" }, { status: 404 });
   }
 
-  const violations = (site.scans[0].issues as { violations?: Violation[] })?.violations ?? [];
+  const report = site.scans[0].issues as AccessibilityReport | null;
+  const violations = report?.violations ?? [];
 
   await sendScanReportEmail({
     to: site.user.email,

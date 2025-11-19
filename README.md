@@ -1,4 +1,4 @@
-# A11yScan
+# Inklight
 
 Automated web accessibility scanner that runs Playwright + axe-core audits, emails WCAG reports, and manages subscriptions through Stripe.
 

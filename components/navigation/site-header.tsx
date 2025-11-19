@@ -8,7 +8,7 @@ export function SiteHeader({ session }: { session: Session | null }) {
     <header className="sticky top-0 z-50 border-b bg-white/80 backdrop-blur">
       <div className="container flex h-16 items-center justify-between">
         <Link href="/" className="text-lg font-semibold tracking-tight">
-          A11yScan
+          Inklight
         </Link>
         <nav className="flex items-center gap-3">
           <Link href="#features" className="text-sm font-medium text-muted-foreground hover:text-foreground">

@@ -39,7 +39,7 @@ export default function Home() {
             Catch accessibility regressions before your customers do.
           </h1>
           <p className="text-lg text-muted-foreground">
-            A11yScan uses Playwright + axe-core to crawl your critical flows, surface WCAG
+            Inklight uses Playwright + axe-core to crawl your critical flows, surface WCAG
             violations, and notify your team in real-time via dashboard, email, and API.
           </p>
           <div className="flex flex-wrap gap-3">

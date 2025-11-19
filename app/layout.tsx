@@ -17,7 +17,7 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "A11yScan — Automated Accessibility Scanner",
+  title: "Inklight — Automated Accessibility Scanner",
   description: "Monitor and fix accessibility issues with automated WCAG scans.",
 };
 

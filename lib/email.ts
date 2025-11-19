@@ -55,7 +55,7 @@ export function renderScanReportHtml(params: {
           <table width="600" cellpadding="0" cellspacing="0" role="presentation" style="background:#fff;border-radius:16px;padding:32px;text-align:left;">
             <tr>
               <td>
-                <p style="text-transform:uppercase;font-size:0.75rem;margin-bottom:0.5rem;color:#6366f1;letter-spacing:0.1em;font-weight:600;">A11yScan Weekly Report</p>
+                <p style="text-transform:uppercase;font-size:0.75rem;margin-bottom:0.5rem;color:#6366f1;letter-spacing:0.1em;font-weight:600;">Inklight Weekly Report</p>
                 <h1 style="margin:0 0 0.5rem;font-size:1.5rem;color:#111">${siteUrl}</h1>
                 <p style="margin:0;color:#52525b;">${total} accessibility issue${total === 1 ? "" : "s"} detected in the latest scan.</p>
               </td>
@@ -121,7 +121,7 @@ export async function sendScanReportEmail(params: {
   const html = renderScanReportHtml(params);
 
   await resend.emails.send({
-    from: "A11yScan <reports@a11yscan.dev>",
+    from: "Inklight <reports@a11yscan.dev>",
     to: params.to,
     subject: `Accessibility report for ${params.siteUrl}`,
     html,
